@@ -16,4 +16,4 @@ env:
 script:
 - BRANCH=$TRAVIS_BRANCH VARIANT=${VARIANT} ./build-and-test.sh
 # Let's push only if not in a pull request and the branch matches the master format
-- if [[ "$TRAVIS_PULL_REQUEST" = false && "$TRAVIS_BRANCH" = "master" ]] ; then BRANCH_VARIANT=`echo "$VARIANT" | sed 's/\./-/g'` && docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push thecodingmachine/node:${BRANCH_VARIANT}; fi
+- if [[ "$TRAVIS_PULL_REQUEST" = false && "$TRAVIS_BRANCH" = "master" ]] ; then BRANCH_VARIANT=`echo "$VARIANT" | sed 's/\./-/g'` && docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push thecodingmachine/nodejs:${BRANCH_VARIANT}; fi
