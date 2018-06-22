@@ -12,16 +12,16 @@ This repository contains a set of **fat**, developer-friendly, general purpose N
 
 | Name                                                                                                                                   | NodeJs version | variant    | Size                                                                                                                                                               |
 |----------------------------------------------------------------------------------------------------------------------------------------|----------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [thecodingmachine/nodejs:node6](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.node6)                 | `6.x`          | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:node6.svg)](https://microbadger.com/images/thecodingmachine/nodejs:node6)                 |
-| [thecodingmachine/nodejs:node8](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.node8)                 | `8.x`          | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:node8.svg)](https://microbadger.com/images/thecodingmachine/nodejs:node8)                 |
-| [thecodingmachine/nodejs:node10](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.node10)               | `10.x`         | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:node10.svg)](https://microbadger.com/images/thecodingmachine/nodejs:node10)               |
-| [thecodingmachine/nodejs:apache-node6](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.apache-node6)   | `6.x`          | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:apache-node6.svg)](https://microbadger.com/images/thecodingmachine/nodejs:apache-node6)   |
-| [thecodingmachine/nodejs:apache-node8](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.apache-node8)   | `8.x`          | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:apache-node8.svg)](https://microbadger.com/images/thecodingmachine/nodejs:apache-node8)   |
-| [thecodingmachine/nodejs:apache-node10](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.apache-node10) | `10.x`         | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:apache-node10.svg)](https://microbadger.com/images/thecodingmachine/nodejs:apache-node10) |
+| [thecodingmachine/nodejs:6](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.6)                 | `6.x`          | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:6.svg)](https://microbadger.com/images/thecodingmachine/nodejs:6)                 |
+| [thecodingmachine/nodejs:8](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.8)                 | `8.x`          | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:8.svg)](https://microbadger.com/images/thecodingmachine/nodejs:8)                 |
+| [thecodingmachine/nodejs:10](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.10)               | `10.x`         | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:10.svg)](https://microbadger.com/images/thecodingmachine/nodejs:10)               |
+| [thecodingmachine/nodejs:6-apache](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.6-apache)   | `6.x`          | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:6-apache.svg)](https://microbadger.com/images/thecodingmachine/nodejs:6-apache)   |
+| [thecodingmachine/nodejs:8-apache](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.8-apache)   | `8.x`          | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:8-apache.svg)](https://microbadger.com/images/thecodingmachine/nodejs:8-apache)   |
+| [thecodingmachine/nodejs:10-apache](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.10-apache) | `10.x`         | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:10-apache.svg)](https://microbadger.com/images/thecodingmachine/nodejs:10-apache) |
 
-Note: we do not tag patch releases of NodeJS, only minor versions. You will find for example an image for NodeJS 6.x, 
-but no tagged image for NodeJS 6.0.1. This is because we believe you have no valid reason to ask explicitly for 6.0.1.
-When 6.0.2 is out, you certainly want to upgrade automatically to this patch release since patch releases contain only bugfixes.
+Note: we do not tag minor releases of NodeJS, only major versions. You will find for example an image for NodeJS 6.x, but no tagged image for NodeJS 6.9. 
+This is because NodeJS follows SemVer and we believe you have no valid reason to ask explicitly for 6.1. 
+When 6.2 is out, you certainly want to upgrade automatically to this minor release since it is backward compatible.
 
 Images are automatically updated when a new patch version of NodeJS is released, so the NodeJS 6.x image will always contain 
 the most up-to-date version of the NodeJS 6.x branch. If you want to automatically update your images on your production
@@ -33,20 +33,20 @@ the images and update your environment on the fly.
 Example with standalone:
 
 ```bash
-$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app thecodingmachine/nodejs:node10 node your-script.js
+$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app thecodingmachine/nodejs:10 node your-script.js
 ```
 
 Example with Apache:
 
 ```bash
-$ docker run -p 80:80 --name my-apache-app -v "$PWD":/var/www/html thecodingmachine/nodejs:apache-node10
+$ docker run -p 80:80 --name my-apache-app -v "$PWD":/var/www/html thecodingmachine/nodejs:10-apache
 ```
 
 Example with Apache + Node 10.x in a Dockerfile:
 
 **Dockerfile**
 ```Dockerfile
-FROM thecodingmachine/nodejs:apache-node10
+FROM thecodingmachine/nodejs:10-apache
 
 COPY src/ /var/www/html/
 RUN yarn install
@@ -84,7 +84,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: thecodingmachine/nodejs:apache-node10
+    image: thecodingmachine/nodejs:10-apache
     environment:
       # Enable the DAV extension for Apache
       APACHE_EXTENSION_DAV: 1
@@ -184,7 +184,7 @@ If such a file is mounted in the image, it will be executed on container startup
 
 ```bash
 docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp \ 
-       -v $PWD/my-startup-script.sh:/etc/container/startup.sh thecodingmachine/nodejs:node10 node your-script.js 
+       -v $PWD/my-startup-script.sh:/etc/container/startup.sh thecodingmachine/nodejs:10 node your-script.js 
 ```
 
 ## Registering SSH private keys
@@ -203,7 +203,7 @@ This option is the easiest way to go if you are using the image on a development
 version: '3'
 services:
   my_app:
-    image: thecodingmachine/nodejs:node10
+    image: thecodingmachine/nodejs:10
     volumes:
       - ~/.ssh:/home/docker/.ssh
 ```
@@ -262,7 +262,7 @@ kind: Pod
 spec:
   containers:
   - name: foobar
-    image: thecodingmachine/nodejs:node10
+    image: thecodingmachine/nodejs:10
     securityContext:
       allowPrivilegeEscalation: true # never use "false" here.
 ```
@@ -282,5 +282,5 @@ This command will generate all the files from the "blueprint" templates.
 You can then test your changes using the `build-and-test.sh` command:
 
 ```bash
-BRANCH=master VARIANT=standalone.node10 ./build-and-test.sh
+BRANCH=master VARIANT=10 ./build-and-test.sh
 ```
