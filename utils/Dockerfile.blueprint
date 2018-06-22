@@ -22,7 +22,7 @@ RUN apt-get update &&\
 # |
 # | Installs Apache.
 # |
-RUN apt-get-update &&\
+RUN apt-get update &&\
     apt-get install -y --no-install-recommends apache2
 
 ENV APACHE_DOCUMENT_ROOT /
