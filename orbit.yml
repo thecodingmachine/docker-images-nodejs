@@ -1,0 +1,27 @@
+# |--------------------------------------------------------------------------
+# | Tasks
+# |--------------------------------------------------------------------------
+# |
+# | This file describes the tasks of the project.
+# |
+# | https://github.com/gulien/orbit/
+# |
+
+tasks:
+
+  # |--------------------------------------------------------------------------
+  # | orbit run generate
+  # |--------------------------------------------------------------------------
+  # |
+  # | Generates all Dockerfiles.
+  # |
+
+  - use: generate
+    short: Generates all Dockerfiles
+    run:
+      - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.node6 -p "NodeVersion,6.x;Variant,standalone"
+      - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.node8 -p "NodeVersion,8.x;Variant,standalone"
+      - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.node10 -p "NodeVersion,10.x;Variant,standalone"
+      - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.apache.node6 -p "NodeVersion,6.x;Variant,apache"
+      - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.apache.node8 -p "NodeVersion,8.x;Variant,apache"
+      - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.apache.node10 -p "NodeVersion,10.x;Variant,apache"
