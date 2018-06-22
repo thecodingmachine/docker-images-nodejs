@@ -4,7 +4,7 @@
 
 This repository contains a set of **fat**, developer-friendly, general purpose NodeJS images for Docker.
      
- - 2 variants available: `standalone` and `apache`
+ - 2 variants available: `standalone` and `apache` (for serving an SPA without NodeJS server as backend)
  - Images are bundled with cron. Cron jobs can be configured using environment variables
  - Everything is done to limit file permission issues that often arise when using Docker. The image is actively tested on Linux, Windows and MacOS
 
