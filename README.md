@@ -269,10 +269,9 @@ spec:
 
 ## Contributing
 
-The Dockerfiles and the README are generated from a template using [Orbit](https://github.com/gulien/orbit).
+The Dockerfiles are generated from a template using [Orbit](https://github.com/gulien/orbit).
 
-If you want to modify a Dockerfile or the README, you should instead edit the `utils/Dockerfile.blueprint`
-or `utils/README.blueprint.md` and then run the command:
+If you want to modify a Dockerfile you should instead edit the `utils/Dockerfile.blueprint`and then run the command:
 
 ```bash
 $ orbit run generate
