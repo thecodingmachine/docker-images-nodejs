@@ -51,9 +51,7 @@ if [[ "$IMAGE_VARIANT" == "apache" ]]; then
     node /usr/local/bin/enable_apache_mods.js | bash
 fi
 
-# output on the logs can be done by writing on the "tini" PID. Useful for CRONTAB
-TINI_PID=`ps -e | grep tini | awk '{print $1;}'`
-node /usr/local/bin/generate_cron.js $TINI_PID > /tmp/generated_crontab
+node /usr/local/bin/generate_cron.js > /tmp/generated_crontab
 chmod 0644 /tmp/generated_crontab
 
 # If generated_crontab is not empty, start supercronic

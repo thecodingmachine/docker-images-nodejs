@@ -143,7 +143,7 @@ To do this, you need to configure 3 variables:
 # configure the user that will run cron (defaults to root)
 CRON_USER=root
 # configure the schedule for the cron job (here: run every minute)
-CRON_SCHEDULE=* * * * *
+CRON_SCHEDULE=* * * * * * *
 # last but not least, configure the command
 CRON_COMMAND=yarn run stuff
 ```
@@ -154,15 +154,15 @@ If you have more than one job to run, you can suffix your environment variable w
 
 ```bash
 CRON_USER_1=root
-CRON_SCHEDULE_1=* * * * *
+CRON_SCHEDULE_1=* * * * * * *
 CRON_COMMAND_1=yarn run stuff
 
 CRON_USER_2=www-data
-CRON_SCHEDULE_2=0 3 * * *
+CRON_SCHEDULE_2=* * * * * * *
 CRON_COMMAND_2=yarn run other-stuff
 ```
 
-**Important**: The cron runner we use is "Supercronic" and not the orginial "cron" that has a number of issues with containers. 
+**Important**: The cron runner we use is [Supercronic](https://github.com/aptible/supercronic) and not the orginial "cron" that has a number of issues with containers. 
 Even with Supercronic, the architecture of cron was never designed with Docker in mind (Cron is way older than Docker). It will run correctly on
 your container. If at some point you want to scale and add more containers, it will run on all your containers.
 At that point, if you only want to run a Cron task once for your application (and not once per container), you might
