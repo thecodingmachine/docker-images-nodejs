@@ -19,14 +19,14 @@ RESULT=`docker run --rm -v $(pwd)/user1999:$CONTAINER_CWD thecodingmachine/nodej
 sudo rm -rf user1999
 
 # Let's check that the crons are actually sending logs in the right place
-RESULT=`docker run --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&1 echo "foobar")" thecodingmachine/nodejs:${VARIANT} -f Dockerfile.${VARIANT} sleep 1 2>&1 | grep -oP 'msg=foobar' | head -n1`
+RESULT=`docker run --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&1 echo "foobar")" thecodingmachine/nodejs:${BRANCH}-${VARIANT} -f Dockerfile.${VARIANT} sleep 1 2>&1 | grep -oP 'msg=foobar' | head -n1`
 [[ "$RESULT" = "msg=foobar" ]]
 
-RESULT=`docker run --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&2 echo "error")" thecodingmachine/nodejs:${VARIANT} -f Dockerfile.${VARIANT} sleep 1 2>&1 | grep -oP 'msg=error' | head -n1`
+RESULT=`docker run --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&2 echo "error")" thecodingmachine/nodejs:${BRANCH}-${VARIANT} -f Dockerfile.${VARIANT} sleep 1 2>&1 | grep -oP 'msg=error' | head -n1`
 [[ "$RESULT" = "msg=error" ]]
 
 # Let's check that the cron with a user different from root is actually run.
-RESULT=`docker run --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="whoami" -e CRON_USER_1="docker" thecodingmachine/nodejs:${VARIANT} -f Dockerfile.${VARIANT} sleep 1 2>&1 | grep -oP 'msg=docker' | head -n1`
+RESULT=`docker run --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="whoami" -e CRON_USER_1="docker" thecodingmachine/nodejs:${BRANCH}-${VARIANT} -f Dockerfile.${VARIANT} sleep 1 2>&1 | grep -oP 'msg=docker' | head -n1`
 [[ "$RESULT" = "msg=docker" ]]
 
 echo "Tests passed with success"
