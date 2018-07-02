@@ -47,16 +47,19 @@ fi
 DOCKER_USER_ID=`id -ur $DOCKER_USER`
 #echo "Docker user id: $DOCKER_USER_ID"
 
-# output on the logs can be done by writing on the "tini" PID. Useful for CRONTAB
-TINI_PID=`ps -e | grep tini | awk '{print $1;}'`
-node /usr/local/bin/generate_cron.js $TINI_PID > /etc/cron.d/generated_crontab
-chmod 0644 /etc/cron.d/generated_crontab
-
 if [[ "$IMAGE_VARIANT" == "apache" ]]; then
     node /usr/local/bin/enable_apache_mods.js | bash
 fi
 
-cron
+# output on the logs can be done by writing on the "tini" PID. Useful for CRONTAB
+TINI_PID=`ps -e | grep tini | awk '{print $1;}'`
+node /usr/local/bin/generate_cron.js $TINI_PID > /tmp/generated_crontab
+chmod 0644 /tmp/generated_crontab
+
+# If generated_crontab is not empty, start supercronic
+if [[ -s /tmp/generated_crontab ]]; then
+    supercronic /tmp/generated_crontab &
+fi
 
 if [ -e /etc/container/startup.sh ]; then
     sudo -E -u "#$DOCKER_USER_ID" source /etc/container/startup.sh

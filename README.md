@@ -162,7 +162,8 @@ CRON_SCHEDULE_2=0 3 * * *
 CRON_COMMAND_2=yarn run other-stuff
 ```
 
-**Important**: Cron was never designed with Docker in mind (it is way older than Docker). It will run correctly on
+**Important**: The cron runner we use is "Supercronic" and not the orginial "cron" that has a number of issues with containers. 
+Even with Supercronic, the architecture of cron was never designed with Docker in mind (Cron is way older than Docker). It will run correctly on
 your container. If at some point you want to scale and add more containers, it will run on all your containers.
 At that point, if you only want to run a Cron task once for your application (and not once per container), you might
 want to have a look at alternative solutions like [Tasker](https://github.com/opsxcq/tasker) or one of the many
