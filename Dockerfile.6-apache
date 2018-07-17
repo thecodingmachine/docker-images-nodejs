@@ -10,7 +10,7 @@ LABEL authors="Julien Neuhart <j.neuhart@thecodingmachine.com>, David Négrier <
 # |
 
 RUN apt-get update &&\
-    apt-get install -y --no-install-recommends curl git nano sudo ca-certificates procps --no-install-recommends
+    apt-get install -y --no-install-recommends curl git nano sudo ca-certificates procps libfontconfig --no-install-recommends
 
 # |--------------------------------------------------------------------------
 # | Supercronic
