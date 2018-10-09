@@ -166,6 +166,8 @@ COPY utils/apache-expose-envvars.sh /usr/local/bin/apache-expose-envvars.sh
 RUN echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf
 RUN a2enconf servername
 
+EXPOSE 80
+
 # |--------------------------------------------------------------------------
 # | Apache user
 # |--------------------------------------------------------------------------
