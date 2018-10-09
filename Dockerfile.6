@@ -28,6 +28,17 @@ RUN SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.
  && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
  && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
 
+ # |--------------------------------------------------------------------------
+ # | User
+ # |--------------------------------------------------------------------------
+ # |
+ # | Define a default user with sudo rights.
+ # |
+
+ RUN useradd -ms /bin/bash docker && adduser docker sudo
+ # Users in the sudoers group can sudo as root without password.
+ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
 
 
 
@@ -55,17 +66,6 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - &&\
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list &&\
     apt-get update &&\
     apt-get install -y --no-install-recommends yarn
-
-# |--------------------------------------------------------------------------
-# | User
-# |--------------------------------------------------------------------------
-# |
-# | Define a default user with sudo rights.
-# |
-
-RUN useradd -ms /bin/bash docker && adduser docker sudo
-# Users in the sudoers group can sudo as root without password.
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # |--------------------------------------------------------------------------
 # | PATH updating
