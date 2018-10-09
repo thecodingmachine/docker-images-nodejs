@@ -37,4 +37,4 @@ for e in "${!APACHE_@}"; do
 	fi
 done
 
-exec apache2 -DFOREGROUND "$@"#!/usr/bin/env bash
+exec apache2 -DFOREGROUND "$@"
