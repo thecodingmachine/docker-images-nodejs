@@ -88,9 +88,6 @@ RUN set -ex \
 
 ENV APACHE_DOCUMENT_ROOT /
 
-RUN sed -ri -e 's!/var/www/html!/var/www/html/${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!/var/www/html/${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
-
 RUN { \
 		echo 'DirectoryIndex disabled'; \
 		echo 'DirectoryIndex index.html'; \
@@ -101,6 +98,9 @@ RUN { \
 		echo '</Directory>'; \
 	} | tee "$APACHE_CONFDIR/conf-available/nodejs.conf" \
 	&& a2enconf nodejs
+
+RUN sed -ri -e 's!/var/www/html!/var/www/html/${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!/var/www/html/${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 # |--------------------------------------------------------------------------
 # | Apache mod_rewrite
