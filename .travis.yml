@@ -10,9 +10,11 @@ env:
   - VARIANT="6"
   - VARIANT="8"
   - VARIANT="10"
+  - VARIANT="12"
   - VARIANT="6-apache"
   - VARIANT="8-apache"
   - VARIANT="10-apache"
+  - VARIANT="12-apache"
 script:
 - BRANCH=$TRAVIS_BRANCH VARIANT=${VARIANT} ./build-and-test.sh
 # Let's push only if not in a pull request and the branch matches the master format
