@@ -22,6 +22,8 @@ tasks:
       - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.6 -p "NodeVersion,6.x;Variant,standalone"
       - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.8 -p "NodeVersion,8.x;Variant,standalone"
       - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.10 -p "NodeVersion,10.x;Variant,standalone"
+      - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.12 -p "NodeVersion,12.x;Variant,standalone"
       - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.6-apache -p "NodeVersion,6.x;Variant,apache"
       - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.8-apache -p "NodeVersion,8.x;Variant,apache"
       - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.10-apache -p "NodeVersion,10.x;Variant,apache"
+      - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.12-apache -p "NodeVersion,12.x;Variant,apache"
