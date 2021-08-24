@@ -48,4 +48,3 @@ jobs:
         if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
         run: |
           docker push thecodingmachine/nodejs:${{ matrix.variant}}
-          docker tag thecodingmachine/nodejs:${{ matrix.variant }}
