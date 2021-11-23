@@ -20,11 +20,13 @@ jobs:
           - variant: '10'
           - variant: '12'
           - variant: '14'
+          - variant: '16'
           - variant: '6-apache'
           - variant: '8-apache'
           - variant: '10-apache'
           - variant: '12-apache'
           - variant: '14-apache'
+          - variant: '16-apache'
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
