@@ -1,7 +1,8 @@
 {{- $node_version := .Orbit.NodeVersion -}}
 {{- $variant := .Orbit.Variant -}}
+{{- $debian_variant := .Orbit.DebianVariant -}}
 
-FROM debian:stretch-slim
+FROM debian:{{ $debian_variant }}
 
 LABEL authors="Julien Neuhart <j.neuhart@thecodingmachine.com>, David Négrier <d.negrier@thecodingmachine.com>"
 
