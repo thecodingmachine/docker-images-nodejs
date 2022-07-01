@@ -3,7 +3,7 @@
 set -xe
 
 # Let's replace the "." by a "-" with some bash magic
-docker build -t thecodingmachine/nodejs:${BRANCH}-${VARIANT} -f Dockerfile.${VARIANT} .
+docker buildx build --platform=linux/amd64,linux/arm64 -t thecodingmachine/nodejs:${BRANCH}-${VARIANT} -f Dockerfile.${VARIANT} .
 
 # Post build unit tests
 if [[ $VARIANT == *apache ]]; then CONTAINER_CWD=/var/www/html; else CONTAINER_CWD=/usr/src/app; fi
@@ -31,4 +31,4 @@ RESULT=`docker run --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="wh
 
 echo "Tests passed with success"
 
-docker build -t thecodingmachine/nodejs:${VARIANT} -f Dockerfile.${VARIANT} .
+docker buildx build --platform=linux/amd64,linux/arm64 -t thecodingmachine/nodejs:${VARIANT} -f Dockerfile.${VARIANT} .
