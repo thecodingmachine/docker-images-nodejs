@@ -7,54 +7,45 @@ This repository contains a set of **fat**, developer-friendly, general purpose N
  - 2 variants available: `standalone` and `apache` (for serving an SPA without NodeJS server as backend)
  - Images are bundled with cron. Cron jobs can be configured using environment variables
  - Everything is done to limit file permission issues that often arise when using Docker. The image is actively tested on Linux, Windows and MacOS
+ - Base image is Debian Bullseye (with more variants to come)
 
 ## Images
 
-| Name                                                                                                                                   | NodeJs version | variant    | Size                                                                                                                                                               |
-|----------------------------------------------------------------------------------------------------------------------------------------|----------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [thecodingmachine/nodejs:6](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.6)                 | `6.x`          | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:6.svg)](https://microbadger.com/images/thecodingmachine/nodejs:6)                 |
-| [thecodingmachine/nodejs:8](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.8)                 | `8.x`          | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:8.svg)](https://microbadger.com/images/thecodingmachine/nodejs:8)                 |
-| [thecodingmachine/nodejs:10](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.10)               | `10.x`         | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:10.svg)](https://microbadger.com/images/thecodingmachine/nodejs:10)               |
-| [thecodingmachine/nodejs:12](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.12)               | `12.x`         | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:12.svg)](https://microbadger.com/images/thecodingmachine/nodejs:12)               |
-| [thecodingmachine/nodejs:14](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.14)               | `14.x`         | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:14.svg)](https://microbadger.com/images/thecodingmachine/nodejs:14)               |
-| [thecodingmachine/nodejs:16](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16)               | `16.x`         | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:16.svg)](https://microbadger.com/images/thecodingmachine/nodejs:16)               |
-| [thecodingmachine/nodejs:18](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18)               | `18.x`         | standalone | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:18.svg)](https://microbadger.com/images/thecodingmachine/nodejs:18)               |
-| [thecodingmachine/nodejs:6-apache](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.6-apache)   | `6.x`          | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:6-apache.svg)](https://microbadger.com/images/thecodingmachine/nodejs:6-apache)   |
-| [thecodingmachine/nodejs:8-apache](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.8-apache)   | `8.x`          | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:8-apache.svg)](https://microbadger.com/images/thecodingmachine/nodejs:8-apache)   |
-| [thecodingmachine/nodejs:10-apache](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.10-apache) | `10.x`         | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:10-apache.svg)](https://microbadger.com/images/thecodingmachine/nodejs:10-apache) |
-| [thecodingmachine/nodejs:12-apache](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.12-apache) | `12.x`         | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:12-apache.svg)](https://microbadger.com/images/thecodingmachine/nodejs:12-apache) |
-| [thecodingmachine/nodejs:14-apache](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.14-apache) | `14.x`         | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:14-apache.svg)](https://microbadger.com/images/thecodingmachine/nodejs:14-apache) |
-| [thecodingmachine/nodejs:16-apache](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-apache) | `16.x`         | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:16-apache.svg)](https://microbadger.com/images/thecodingmachine/nodejs:16-apache) |
-| [thecodingmachine/nodejs:18-apache](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-apache) | `18.x`         | apache     | [![](https://images.microbadger.com/badges/image/thecodingmachine/nodejs:18-apache.svg)](https://microbadger.com/images/thecodingmachine/nodejs:18-apache) |
+| Name                                                                                                                                                | NodeJs version | variant    | base distro     |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------|----------------|------------|-----------------|
+| [thecodingmachine/nodejs:v2-14-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.14-bullseye)               | `14.x`         | standalone | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-16-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-bullseye)               | `16.x`         | standalone | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-18-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-bullseye)               | `18.x`         | standalone | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-14-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.14-apache-bullseye) | `14.x`         | apache     | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-16-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-apache-bullseye) | `16.x`         | apache     | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-18-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-apache-bullseye) | `18.x`         | apache     | Debian Bullseye |
 
-Note: we do not tag minor releases of NodeJS, only major versions. You will find for example an image for NodeJS 6.x, but no tagged image for NodeJS 6.9. 
-This is because NodeJS follows SemVer and we believe you have no valid reason to ask explicitly for 6.1. 
-When 6.2 is out, you certainly want to upgrade automatically to this minor release since it is backward compatible.
+Note: we do not tag minor releases of NodeJS, only major versions. You will find for example an image for NodeJS 18.x, but no tagged image for NodeJS 18.2. 
+This is because NodeJS follows SemVer and we believe you have no valid reason to ask explicitly for 18.2. 
+When 18.3 is out, you certainly want to upgrade automatically to this minor release since it is backward compatible.
 
-Images are automatically updated when a new patch version of NodeJS is released, so the NodeJS 6.x image will always contain 
-the most up-to-date version of the NodeJS 6.x branch. If you want to automatically update your images on your production
-environment, you can use tools like [watchtower](https://github.com/v2tec/watchtower) that will monitor new versions of
-the images and update your environment on the fly.
+Images are automatically updated when a new patch version of NodeJS is released, so the NodeJS 18.x image will always contain 
+the most up-to-date version of the NodeJS 18.x branch.
 
 ## Usage
 
 Example with standalone:
 
 ```bash
-$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app thecodingmachine/nodejs:10 node your-script.js
+$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app thecodingmachine/nodejs:v2-18-bullseye node your-script.js
 ```
 
 Example with Apache:
 
 ```bash
-$ docker run -p 80:80 --name my-apache-app -v "$PWD":/var/www/html thecodingmachine/nodejs:10-apache
+$ docker run -p 80:80 --name my-apache-app -v "$PWD":/var/www/html thecodingmachine/nodejs:v2-18-bullseye-apache
 ```
 
-Example with Apache + Node 10.x in a Dockerfile:
+Example with Apache + Node 18.x in a Dockerfile:
 
 **Dockerfile**
 ```Dockerfile
-FROM thecodingmachine/nodejs:10-apache
+FROM thecodingmachine/nodejs:v2-18-bullseye-apache
 
 COPY src/ /var/www/html/
 RUN yarn install
@@ -92,7 +83,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: thecodingmachine/nodejs:10-apache
+    image: thecodingmachine/nodejs:v2-18-bullseye-apache
     environment:
       # Enable the DAV extension for Apache
       APACHE_EXTENSION_DAV: 1
@@ -193,7 +184,7 @@ If such a file is mounted in the image, it will be executed on container startup
 
 ```bash
 docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp \ 
-       -v $PWD/my-startup-script.sh:/etc/container/startup.sh thecodingmachine/nodejs:10 node your-script.js 
+       -v $PWD/my-startup-script.sh:/etc/container/startup.sh thecodingmachine/nodejs:v2-18-bullseye node your-script.js 
 ```
 
 ## Registering SSH private keys
@@ -212,7 +203,7 @@ This option is the easiest way to go if you are using the image on a development
 version: '3'
 services:
   my_app:
-    image: thecodingmachine/nodejs:10
+    image: thecodingmachine/nodejs:v2-18-bullseye
     volumes:
       - ~/.ssh:/home/docker/.ssh
 ```
@@ -271,7 +262,7 @@ kind: Pod
 spec:
   containers:
   - name: foobar
-    image: thecodingmachine/nodejs:10
+    image: thecodingmachine/nodejs:v2-18-bullseye
     securityContext:
       allowPrivilegeEscalation: true # never use "false" here.
 ```
@@ -291,5 +282,5 @@ This command will generate all the files from the "blueprint" templates.
 You can then test your changes using the `build-and-test.sh` command:
 
 ```bash
-BRANCH=master VARIANT=10 ./build-and-test.sh
+TAG=v2-18-bullseye VARIANT=18-bullseye ./build-and-test.sh
 ```

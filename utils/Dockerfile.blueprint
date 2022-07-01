@@ -1,8 +1,8 @@
 {{- $node_version := .Orbit.NodeVersion -}}
 {{- $variant := .Orbit.Variant -}}
-{{- $debian_variant := .Orbit.DebianVariant -}}
+{{- $base_image := .Orbit.BaseImage -}}
 
-FROM debian:{{ $debian_variant }}
+FROM {{ $base_image }}
 
 LABEL authors="Julien Neuhart <j.neuhart@thecodingmachine.com>, David Négrier <d.negrier@thecodingmachine.com>"
 

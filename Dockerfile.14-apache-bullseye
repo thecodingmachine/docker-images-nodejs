@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:bullseye-slim
 
 LABEL authors="Julien Neuhart <j.neuhart@thecodingmachine.com>, David Négrier <d.negrier@thecodingmachine.com>"
 
@@ -121,7 +121,7 @@ RUN a2enmod rewrite
 
 RUN apt-get update &&\
     apt-get install -y --no-install-recommends gnupg &&\
-    curl -sL https://deb.nodesource.com/setup_10.x | bash - &&\
+    curl -sL https://deb.nodesource.com/setup_14.x | bash - &&\
     apt-get update &&\
     apt-get install -y --no-install-recommends nodejs
 
@@ -181,7 +181,7 @@ USER root
 # | Defines the entrypoint.
 # |
 
-ENV NODE_VERSION=10.x
+ENV NODE_VERSION=14.x
 
 
 RUN mkdir -p /var/www/html && chown docker:docker /var/www/html

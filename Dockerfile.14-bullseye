@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:bullseye-slim
 
 LABEL authors="Julien Neuhart <j.neuhart@thecodingmachine.com>, David Négrier <d.negrier@thecodingmachine.com>"
 
@@ -51,7 +51,7 @@ RUN SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.
 
 RUN apt-get update &&\
     apt-get install -y --no-install-recommends gnupg &&\
-    curl -sL https://deb.nodesource.com/setup_12.x | bash - &&\
+    curl -sL https://deb.nodesource.com/setup_14.x | bash - &&\
     apt-get update &&\
     apt-get install -y --no-install-recommends nodejs
 
@@ -111,7 +111,7 @@ USER root
 # | Defines the entrypoint.
 # |
 
-ENV NODE_VERSION=12.x
+ENV NODE_VERSION=14.x
 
 
 RUN mkdir -p /usr/src/app && chown docker:docker /usr/src/app

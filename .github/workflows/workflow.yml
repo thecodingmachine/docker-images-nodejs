@@ -15,20 +15,12 @@ jobs:
     strategy:
       matrix:
         include:
-          - variant: '6'
-          - variant: '8'
-          - variant: '10'
-          - variant: '12'
-          - variant: '14'
-          - variant: '16'
-          - variant: '18'
-          - variant: '6-apache'
-          - variant: '8-apache'
-          - variant: '10-apache'
-          - variant: '12-apache'
-          - variant: '14-apache'
-          - variant: '16-apache'
-          - variant: '18-apache'
+          - variant: '14-bullseye'
+          - variant: '16-bullseye'
+          - variant: '18-bullseye'
+          - variant: '14-apache-bullseye'
+          - variant: '16-apache-bullseye'
+          - variant: '18-apache-bullseye'
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -47,5 +39,5 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
         run: |
-          BRANCH="master" VARIANT="${{ matrix.variant }}" ./build-and-test.sh
+          TAG="v2-${{ matrix.variant }}" VARIANT="${{ matrix.variant }}" ./build-and-test.sh
           docker images | grep thecodingmachine/nodejs
