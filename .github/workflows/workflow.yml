@@ -44,6 +44,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build, test and push
+        env:
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           BRANCH="master" VARIANT="${{ matrix.variant }}" ./build-and-test.sh
           docker images | grep thecodingmachine/nodejs

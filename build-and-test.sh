@@ -30,4 +30,6 @@ RESULT=`docker run --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="wh
 
 echo "Tests passed with success"
 
-docker buildx build --platform=linux/amd64,linux/arm64 --push -t thecodingmachine/nodejs:${VARIANT} -f Dockerfile.${VARIANT} .
+if [[ "$EVENT_NAME" == "push" || "$EVENT_NAME" == "schedule" ]]; then
+  docker buildx build --platform=linux/amd64,linux/arm64 --push -t thecodingmachine/nodejs:${VARIANT} -f Dockerfile.${VARIANT} .
+fi
