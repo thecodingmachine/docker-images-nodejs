@@ -2,7 +2,7 @@
 
 set -xe
 
-docker buildx build --load -t thecodingmachine/nodejs:${VARIANT} -f Dockerfile.${VARIANT} .
+docker buildx build --platform=linux/amd64 --load -t thecodingmachine/nodejs:${VARIANT} -f Dockerfile.${VARIANT} .
 
 # Post build unit tests
 if [[ $VARIANT == *apache ]]; then CONTAINER_CWD=/var/www/html; else CONTAINER_CWD=/usr/src/app; fi
