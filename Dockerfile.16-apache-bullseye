@@ -19,7 +19,7 @@ RUN apt-get update &&\
 # | Supercronic is a drop-in replacement for cron (for containers).
 # |
 
-RUN SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.13/supercronic-linux-$( dpkg --print-architecture ) \
+RUN SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-$( dpkg --print-architecture ) \
  && SUPERCRONIC=supercronic-linux-$( dpkg --print-architecture ) \
  && curl -fsSLO "$SUPERCRONIC_URL" \
  && chmod +x "$SUPERCRONIC" \
