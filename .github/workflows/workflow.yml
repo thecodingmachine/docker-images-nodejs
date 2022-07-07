@@ -3,12 +3,12 @@ name: Docker NodeJS Images GitHub workflow
 on:
   pull_request:
     branches:
-      - 'master'
+      - 'v1'
   push:
     branches:
-      - 'master'
+      - 'v1'
   schedule:
-    - cron: '43 4 * * 0'
+    - cron: '43 4 * * 1'
 
 jobs:
   build_test_maybe_release:
