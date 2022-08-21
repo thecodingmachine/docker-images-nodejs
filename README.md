@@ -38,14 +38,14 @@ $ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app thecodingm
 Example with Apache:
 
 ```bash
-$ docker run -p 80:80 --name my-apache-app -v "$PWD":/var/www/html thecodingmachine/nodejs:v2-18-bullseye-apache
+$ docker run -p 80:80 --name my-apache-app -v "$PWD":/var/www/html thecodingmachine/nodejs:v2-18-apache-bullseye
 ```
 
 Example with Apache + Node 18.x in a Dockerfile:
 
 **Dockerfile**
 ```Dockerfile
-FROM thecodingmachine/nodejs:v2-18-bullseye-apache
+FROM thecodingmachine/nodejs:v2-18-apache-bullseye
 
 COPY src/ /var/www/html/
 RUN yarn install
@@ -83,7 +83,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: thecodingmachine/nodejs:v2-18-bullseye-apache
+    image: thecodingmachine/nodejs:v2-18-apache-bullseye
     environment:
       # Enable the DAV extension for Apache
       APACHE_EXTENSION_DAV: 1
