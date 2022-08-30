@@ -116,12 +116,6 @@ RUN mkdir -p /usr/src/app && chown docker:docker /usr/src/app
 WORKDIR /usr/src/app
 
 
-# Add Tini (to be able to stop the container with ctrl-c.
-# See: https://github.com/krallin/tini
-ENV TINI_VERSION v0.16.1
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
-
 COPY utils/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 COPY utils/docker-entrypoint-as-root.sh /usr/local/bin/docker-entrypoint-as-root.sh
 COPY utils/startup_commands.js /usr/local/bin/startup_commands.js
