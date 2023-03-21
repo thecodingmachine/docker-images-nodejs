@@ -101,7 +101,6 @@ RUN { \
 
 USER root
 
-
 # |--------------------------------------------------------------------------
 # | Entrypoint
 # |--------------------------------------------------------------------------
@@ -116,8 +115,6 @@ RUN mkdir -p /usr/src/app && chown docker:docker /usr/src/app
 WORKDIR /usr/src/app
 
 
-
-
 COPY utils/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 COPY utils/docker-entrypoint-as-root.sh /usr/local/bin/docker-entrypoint-as-root.sh
 COPY utils/startup_commands.js /usr/local/bin/startup_commands.js
@@ -126,8 +123,6 @@ COPY utils/generate_cron.js /usr/local/bin/generate_cron.js
 
 
 CMD [ "node" ]
-
-
 
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

@@ -171,7 +171,6 @@ RUN { \
 
 USER root
 
-
 # |--------------------------------------------------------------------------
 # | Entrypoint
 # |--------------------------------------------------------------------------
@@ -184,8 +183,6 @@ ENV NODE_VERSION=16.x
 
 RUN mkdir -p /var/www/html && chown docker:docker /var/www/html
 WORKDIR /var/www/html
-
-
 
 
 COPY utils/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
@@ -218,8 +215,6 @@ ENV APACHE_RUN_USER=docker \
 
 COPY utils/apache2-foreground /usr/local/bin/
 CMD ["apache2-foreground"]
-
-
 
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

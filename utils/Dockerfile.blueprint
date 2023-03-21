@@ -175,7 +175,6 @@ RUN { \
 
 USER root
 
-
 # |--------------------------------------------------------------------------
 # | Entrypoint
 # |--------------------------------------------------------------------------
@@ -192,8 +191,6 @@ WORKDIR /usr/src/app
 RUN mkdir -p /var/www/html && chown docker:docker /var/www/html
 WORKDIR /var/www/html
 {{ end }}
-
-
 
 COPY utils/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 COPY utils/docker-entrypoint-as-root.sh /usr/local/bin/docker-entrypoint-as-root.sh
@@ -228,8 +225,6 @@ CMD ["apache2-foreground"]
 {{ else }}
 CMD [ "node" ]
 {{ end }}
-
-
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
