@@ -2,4 +2,4 @@
 
 set -e
 
-exec "sudo" "-E" "/usr/local/bin/docker-entrypoint-as-root.sh" "$@";
+exec "sudo" "-E" "tini" "-s" "-v" "--" "/usr/local/bin/docker-entrypoint-as-root.sh" "$@";
