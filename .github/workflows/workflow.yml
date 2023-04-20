@@ -48,6 +48,8 @@ jobs:
       - name: Build, test and push
         env:
           EVENT_NAME: ${{ github.event_name }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG="v2-${{ matrix.variant }}" VARIANT="${{ matrix.variant }}" ./build-and-test.sh
           docker images | grep thecodingmachine/nodejs
