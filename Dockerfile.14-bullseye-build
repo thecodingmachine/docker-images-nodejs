@@ -126,6 +126,10 @@ CMD [ "node" ]
 
 
 
+# Let's install the build tools (useful for node-gyp)
+RUN apt-get update &&\
+    apt-get install -y --no-install-recommends build-essential
+
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
