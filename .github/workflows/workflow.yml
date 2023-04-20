@@ -18,9 +18,19 @@ jobs:
           - variant: '14-bullseye'
           - variant: '16-bullseye'
           - variant: '18-bullseye'
+          - variant: '20-bullseye'
           - variant: '14-apache-bullseye'
           - variant: '16-apache-bullseye'
           - variant: '18-apache-bullseye'
+          - variant: '20-apache-bullseye'
+          - variant: '14-bullseye-build'
+          - variant: '16-bullseye-build'
+          - variant: '18-bullseye-build'
+          - variant: '20-bullseye-build'
+          - variant: '14-apache-bullseye-build'
+          - variant: '16-apache-bullseye-build'
+          - variant: '18-apache-bullseye-build'
+          - variant: '20-apache-bullseye-build'
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU

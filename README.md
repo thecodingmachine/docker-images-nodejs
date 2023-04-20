@@ -5,20 +5,32 @@
 This repository contains a set of **fat**, developer-friendly, general purpose NodeJS images for Docker.
      
  - 2 variants available: `standalone` and `apache` (for serving an SPA without NodeJS server as backend)
+ - For each variant, you can select the `build` sub-variant that contains essential build tools (make, gcc, etc.) that can be needed to compile native extensions
  - Images are bundled with cron. Cron jobs can be configured using environment variables
  - Everything is done to limit file permission issues that often arise when using Docker. The image is actively tested on Linux, Windows and MacOS
  - Base image is Debian Bullseye (with more variants to come)
 
 ## Images
 
-| Name                                                                                                                                                | NodeJs version | variant    | base distro     |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------|----------------|------------|-----------------|
-| [thecodingmachine/nodejs:v2-14-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.14-bullseye)               | `14.x`         | standalone | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-16-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-bullseye)               | `16.x`         | standalone | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-18-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-bullseye)               | `18.x`         | standalone | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-14-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.14-apache-bullseye) | `14.x`         | apache     | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-16-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-apache-bullseye) | `16.x`         | apache     | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-18-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-apache-bullseye) | `18.x`         | apache     | Debian Bullseye |
+| Name                                                                                                                                                            | NodeJs version | variant    | build tools | base distro     |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|------------|-------------|-----------------|
+| [thecodingmachine/nodejs:v2-14-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.14-bullseye)                           | `14.x`         | standalone | No          | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-16-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-bullseye)                           | `16.x`         | standalone | No          | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-18-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-bullseye)                           | `18.x`         | standalone | No          | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-18-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.20-bullseye)                           | `20.x`         | standalone | No          | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-14-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.14-bullseye-build)               | `14.x`         | standalone | No          | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-16-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-bullseye-build)               | `16.x`         | standalone | No          | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-18-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-bullseye-build)               | `18.x`         | standalone | No          | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-20-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.20-bullseye-build)               | `20.x`         | standalone | No          | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-14-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.14-apache-bullseye)             | `14.x`         | apache     | No          | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-16-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-apache-bullseye)             | `16.x`         | apache     | No          | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-18-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-apache-bullseye)             | `18.x`         | apache     | No          | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-20-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.20-apache-bullseye)             | `20.x`         | apache     | No          | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-14-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.14-apache-bullseye-build) | `14.x`         | apache     | Yes         | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-16-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-apache-bullseye-build) | `16.x`         | apache     | Yes         | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-18-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-apache-bullseye-build) | `18.x`         | apache     | Yes         | Debian Bullseye |
+| [thecodingmachine/nodejs:v2-20-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.20-apache-bullseye-build) | `20.x`         | apache     | Yes         | Debian Bullseye |
+
 
 Note: we do not tag minor releases of NodeJS, only major versions. You will find for example an image for NodeJS 18.x, but no tagged image for NodeJS 18.2. 
 This is because NodeJS follows SemVer and we believe you have no valid reason to ask explicitly for 18.2. 
@@ -57,10 +69,10 @@ RUN yarn run buld
 The working directory (the directory in which you should mount/copy your application) depends on the image variant
 you are using:
 
-| Variant | Working directory |
-|---------|-------------------|
-| standalone     | `/usr/src/app`    |
-| apache  | `/var/www/html`   |
+| Variant    | Working directory |
+|------------|-------------------|
+| standalone | `/usr/src/app`    |
+| apache     | `/var/www/html`   |
 
 
 ## Changing Apache document root

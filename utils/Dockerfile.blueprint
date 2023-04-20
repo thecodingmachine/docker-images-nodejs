@@ -1,5 +1,6 @@
 {{- $node_version := .Orbit.NodeVersion -}}
 {{- $variant := .Orbit.Variant -}}
+{{- $build := .Orbit.Build -}}
 {{- $base_image := .Orbit.BaseImage -}}
 
 FROM {{ $base_image }}
@@ -224,6 +225,12 @@ COPY utils/apache2-foreground /usr/local/bin/
 CMD ["apache2-foreground"]
 {{ else }}
 CMD [ "node" ]
+{{ end }}
+
+{{ if eq $build "true" }}
+# Let's install the build tools (useful for node-gyp)
+RUN apt-get update &&\
+    apt-get install -y --no-install-recommends build-essential
 {{ end }}
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

@@ -125,6 +125,8 @@ COPY utils/generate_cron.js /usr/local/bin/generate_cron.js
 CMD [ "node" ]
 
 
+
+
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 
