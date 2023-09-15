@@ -124,7 +124,9 @@ RUN a2enmod rewrite
 
 RUN apt-get update &&\
     apt-get install -y --no-install-recommends gnupg &&\
-    curl -sL https://deb.nodesource.com/setup_{{ $node_version }} | bash - &&\
+    {{ if lt $node_version "16" }}curl -sL https://deb.nodesource.com/setup_{{ $node_version }}.x | bash - &&\{{ else }}mkdir -p /etc/apt/keyrings && \
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_{{ $node_version }}.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list &&\{{ end }}
     apt-get update &&\
     apt-get install -y --no-install-recommends nodejs
 
@@ -183,7 +185,7 @@ USER root
 # | Defines the entrypoint.
 # |
 
-ENV NODE_VERSION={{ $node_version }}
+ENV NODE_VERSION={{ $node_version }}.x
 
 {{ if eq $variant "standalone" }}
 RUN mkdir -p /usr/src/app && chown docker:docker /usr/src/app
