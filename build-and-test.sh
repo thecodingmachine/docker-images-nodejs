@@ -13,7 +13,7 @@ RESULT=`docker run --rm thecodingmachine/nodejs:${TAG} id -ur`
 # If mounted, default user has the id of the mount directory
 mkdir user1999 && sudo chown 1999:1999 user1999
 ls -al user1999
-RESULT=`docker run --rm -v $(pwd)/user1999:$CONTAINER_CWD thecodingmachine/nodejs:${TAG} id -ur`
+RESULT=`docker run --rm -v "$(pwd)/user1999:$CONTAINER_CWD" thecodingmachine/nodejs:${TAG} id -ur`
 [[ "$RESULT" = "1999" ]]
 sudo rm -rf user1999
 
