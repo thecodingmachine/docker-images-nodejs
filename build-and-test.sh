@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-set -xe
+set -eE -o functrace
+
+failure() {
+  local lineno=$1
+  local msg=$2
+  echo "Failed at $lineno: $msg"
+  sudo rm user1999 -rf
+}
+trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
 docker buildx build --platform=linux/amd64 --load -t thecodingmachine/nodejs:${TAG} -f Dockerfile.${VARIANT} .
 
