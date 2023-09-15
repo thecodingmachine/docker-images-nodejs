@@ -39,6 +39,7 @@ RESULT=`docker run --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="wh
 echo "Tests passed with success"
 
 if [[ "$EVENT_NAME" == "push" || "$EVENT_NAME" == "schedule" ]]; then
+
   docker buildx build --platform=linux/amd64,linux/arm64 --push -t thecodingmachine/nodejs:${TAG} -f Dockerfile.${VARIANT} .
   docker login ghcr.io --username ${GITHUB_ACTOR} --password ${GITHUB_TOKEN}
   docker buildx build --platform=linux/amd64,linux/arm64 --push -t ghcr.io/thecodingmachine/nodejs:${TAG} -f Dockerfile.${VARIANT} .
