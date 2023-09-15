@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-set -xe
+set -eE -o functrace
+
+failure() {
+  local lineno=$1
+  local msg=$2
+  echo "Failed at $lineno: $msg"
+  sudo rm user1999 -rf
+}
+trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
 docker buildx build --platform=linux/amd64 --load -t thecodingmachine/nodejs:${TAG} -f Dockerfile.${VARIANT} .
 
@@ -13,7 +21,7 @@ RESULT=`docker run --rm thecodingmachine/nodejs:${TAG} id -ur`
 # If mounted, default user has the id of the mount directory
 mkdir user1999 && sudo chown 1999:1999 user1999
 ls -al user1999
-RESULT=`docker run --rm -v $(pwd)/user1999:$CONTAINER_CWD thecodingmachine/nodejs:${TAG} id -ur`
+RESULT=`docker run --rm -v "$(pwd)/user1999:$CONTAINER_CWD" thecodingmachine/nodejs:${TAG} id -ur`
 [[ "$RESULT" = "1999" ]]
 sudo rm -rf user1999
 
