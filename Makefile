@@ -5,9 +5,15 @@ blueprint: ## Generate all blueprints file
 
 test-latest: test-20 ## Test the latest build only
 
-test-20: blueprint ## Test node 20 build only
-	BRANCH=master VARIANT=20-bullseye TAG=v2-20-bullseye ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	BRANCH=master VARIANT=20-apache-bullseye TAG=v2-20-apache-bullseye ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	notify-send -u critical "Tests passed with success"
+test-14: ## Test node 14 build only
+test-16: ## Test node 16 build only
+test-18: ## Test node 18 build only
+test-20: ## Test node 20 build only
+test-%: blueprint ## Test node X build
+	BRANCH=master VARIANT=$(*)-bullseye TAG=v2-$(*)-bullseye ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
+	BRANCH=master VARIANT=$(*)-bullseye-build TAG=v2-$(*)-bullseye-build ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
+	BRANCH=master VARIANT=$(*)-apache-bullseye TAG=v2-$(*)-apache-bullseye ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
+	BRANCH=master VARIANT=$(*)-apache-bullseye-build TAG=v2-$(*)-apache-bullseye-build ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
+	notify-send -u critical "Tests passed with success for $*"
 
 clean: ## Clean dangles image after build
