@@ -40,6 +40,22 @@ jobs:
           - variant: '22-apache-bullseye-build'
           - variant: '24-apache-bullseye-build'
           - variant: '26-apache-bullseye-build'
+          - variant: '20-trixie'
+          - variant: '22-trixie'
+          - variant: '24-trixie'
+          - variant: '26-trixie'
+          - variant: '20-apache-trixie'
+          - variant: '22-apache-trixie'
+          - variant: '24-apache-trixie'
+          - variant: '26-apache-trixie'
+          - variant: '20-trixie-build'
+          - variant: '22-trixie-build'
+          - variant: '24-trixie-build'
+          - variant: '26-trixie-build'
+          - variant: '20-apache-trixie-build'
+          - variant: '22-apache-trixie-build'
+          - variant: '24-apache-trixie-build'
+          - variant: '26-apache-trixie-build'
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
