@@ -34,7 +34,7 @@ RUN SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.
  # | Define a default user with sudo rights.
  # |
 
- RUN useradd -ms /bin/bash docker && adduser docker sudo
+ RUN useradd -ms /bin/bash docker && usermod -a -G sudo docker
  # Users in the sudoers group can sudo as root without password.
  RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
