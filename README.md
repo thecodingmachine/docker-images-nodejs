@@ -4,7 +4,7 @@
 
 This repository contains a set of **fat**, developer-friendly, general purpose NodeJS images for Docker.
 
- - 2 distributions available: Debian `bullseye` and Debian `trixie`
+ - Based on Debian `trixie` (`bullseye` images are no longer built: Debian 11 reached end of life)
  - 2 variants available: `standalone` and `apache` (for serving an SPA without NodeJS server as backend)
  - For each variant, you can select the `build` sub-variant that contains essential build tools (make, gcc, etc.) that can be needed to compile native extensions
  - Images are bundled with cron. Cron jobs can be configured using environment variables
@@ -30,30 +30,6 @@ This repository contains a set of **fat**, developer-friendly, general purpose N
 | [thecodingmachine/nodejs:v2-22-apache-trixie-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.22-apache-trixie-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-22-apache-trixie-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.22-apache-trixie-build) | `22.x`         | apache     | Yes         | Debian Trixie |
 | [thecodingmachine/nodejs:v2-24-apache-trixie-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.24-apache-trixie-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-24-apache-trixie-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.24-apache-trixie-build) | `24.x`         | apache     | Yes         | Debian Trixie |
 | [thecodingmachine/nodejs:v2-26-apache-trixie-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.26-apache-trixie-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-26-apache-trixie-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.26-apache-trixie-build) | `26.x`         | apache     | Yes         | Debian Trixie |
-| [thecodingmachine/nodejs:v2-16-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-bullseye)<br/>[ghcr.io/thecodingmachine/nodejs:v2-16-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-bullseye)                                                     | `16.x`         | standalone | No          | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-18-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-bullseye)<br/>[ghcr.io/thecodingmachine/nodejs:v2-18-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-bullseye)                                                     | `18.x`         | standalone | No          | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-20-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.20-bullseye)<br/>[ghcr.io/thecodingmachine/nodejs:v2-20-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.20-bullseye)                                                     | `20.x`         | standalone | No          | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-22-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.22-bullseye)<br/>[ghcr.io/thecodingmachine/nodejs:v2-22-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.22-bullseye)                                                     | `22.x`         | standalone | No          | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-24-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.24-bullseye)<br/>[ghcr.io/thecodingmachine/nodejs:v2-24-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.24-bullseye)                                                     | `24.x`         | standalone | No          | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-26-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.26-bullseye)<br/>[ghcr.io/thecodingmachine/nodejs:v2-26-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.26-bullseye)                                                     | `26.x`         | standalone | No          | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-16-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-bullseye-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-16-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-bullseye-build)                             | `16.x`         | standalone | Yes         | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-18-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-bullseye-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-18-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-bullseye-build)                             | `18.x`         | standalone | Yes         | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-20-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.20-bullseye-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-20-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.20-bullseye-build)                             | `20.x`         | standalone | Yes         | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-22-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.22-bullseye-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-22-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.22-bullseye-build)                             | `22.x`         | standalone | Yes         | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-24-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.24-bullseye-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-24-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.24-bullseye-build)                             | `24.x`         | standalone | Yes         | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-26-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.26-bullseye-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-26-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.26-bullseye-build)                             | `26.x`         | standalone | Yes         | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-16-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-apache-bullseye)<br/>[ghcr.io/thecodingmachine/nodejs:v2-16-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-apache-bullseye)                         | `16.x`         | apache     | No          | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-18-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-apache-bullseye)<br/>[ghcr.io/thecodingmachine/nodejs:v2-18-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-apache-bullseye)                         | `18.x`         | apache     | No          | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-20-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.20-apache-bullseye)<br/>[ghcr.io/thecodingmachine/nodejs:v2-20-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.20-apache-bullseye)                         | `20.x`         | apache     | No          | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-22-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.22-apache-bullseye)<br/>[ghcr.io/thecodingmachine/nodejs:v2-22-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.22-apache-bullseye)                         | `22.x`         | apache     | No          | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-24-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.24-apache-bullseye)<br/>[ghcr.io/thecodingmachine/nodejs:v2-24-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.24-apache-bullseye)                         | `24.x`         | apache     | No          | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-26-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.26-apache-bullseye)<br/>[ghcr.io/thecodingmachine/nodejs:v2-26-apache-bullseye](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.26-apache-bullseye)                         | `26.x`         | apache     | No          | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-16-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-apache-bullseye-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-16-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.16-apache-bullseye-build) | `16.x`         | apache     | Yes         | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-18-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-apache-bullseye-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-18-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.18-apache-bullseye-build) | `18.x`         | apache     | Yes         | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-20-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.20-apache-bullseye-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-20-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.20-apache-bullseye-build) | `20.x`         | apache     | Yes         | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-22-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.22-apache-bullseye-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-22-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.22-apache-bullseye-build) | `22.x`         | apache     | Yes         | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-24-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.24-apache-bullseye-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-24-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.24-apache-bullseye-build) | `24.x`         | apache     | Yes         | Debian Bullseye |
-| [thecodingmachine/nodejs:v2-26-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.26-apache-bullseye-build)<br/>[ghcr.io/thecodingmachine/nodejs:v2-26-apache-bullseye-build](https://github.com/thecodingmachine/docker-images-nodejs/blob/master/Dockerfile.26-apache-bullseye-build) | `26.x`         | apache     | Yes         | Debian Bullseye |
 
 Note: we do not tag minor releases of NodeJS, only major versions. You will find for example an image for NodeJS 18.x, but no tagged image for NodeJS 18.2. 
 This is because NodeJS follows SemVer and we believe you have no valid reason to ask explicitly for 18.2. 
@@ -67,20 +43,20 @@ the most up-to-date version of the NodeJS 18.x branch.
 Example with standalone:
 
 ```bash
-$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app thecodingmachine/nodejs:v2-18-bullseye node your-script.js
+$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app thecodingmachine/nodejs:v2-24-trixie node your-script.js
 ```
 
 Example with Apache:
 
 ```bash
-$ docker run -p 80:80 --name my-apache-app -v "$PWD":/var/www/html thecodingmachine/nodejs:v2-18-apache-bullseye
+$ docker run -p 80:80 --name my-apache-app -v "$PWD":/var/www/html thecodingmachine/nodejs:v2-24-apache-trixie
 ```
 
 Example with Apache + Node 18.x in a Dockerfile:
 
 **Dockerfile**
 ```Dockerfile
-FROM thecodingmachine/nodejs:v2-18-apache-bullseye
+FROM thecodingmachine/nodejs:v2-24-apache-trixie
 
 COPY src/ /var/www/html/
 RUN yarn install
@@ -118,7 +94,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: thecodingmachine/nodejs:v2-18-apache-bullseye
+    image: thecodingmachine/nodejs:v2-24-apache-trixie
     environment:
       # Enable the DAV extension for Apache
       APACHE_EXTENSION_DAV: 1
@@ -219,7 +195,7 @@ If such a file is mounted in the image, it will be executed on container startup
 
 ```bash
 docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp \ 
-       -v $PWD/my-startup-script.sh:/etc/container/startup.sh thecodingmachine/nodejs:v2-18-bullseye node your-script.js 
+       -v $PWD/my-startup-script.sh:/etc/container/startup.sh thecodingmachine/nodejs:v2-24-trixie node your-script.js 
 ```
 
 ## Registering SSH private keys
@@ -238,7 +214,7 @@ This option is the easiest way to go if you are using the image on a development
 version: '3'
 services:
   my_app:
-    image: thecodingmachine/nodejs:v2-18-bullseye
+    image: thecodingmachine/nodejs:v2-24-trixie
     volumes:
       - ~/.ssh:/home/docker/.ssh
 ```
@@ -297,7 +273,7 @@ kind: Pod
 spec:
   containers:
   - name: foobar
-    image: thecodingmachine/nodejs:v2-18-bullseye
+    image: thecodingmachine/nodejs:v2-24-trixie
     securityContext:
       allowPrivilegeEscalation: true # never use "false" here.
 ```
@@ -317,5 +293,5 @@ This command will generate all the files from the "blueprint" templates.
 You can then test your changes using the `build-and-test.sh` command:
 
 ```bash
-TAG=v2-18-bullseye VARIANT=18-bullseye ./build-and-test.sh
+TAG=v2-24-trixie VARIANT=24-trixie ./build-and-test.sh
 ```
