@@ -36,6 +36,20 @@ RESULT=`docker run --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>
 RESULT=`docker run --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="whoami" -e CRON_USER_1="docker" thecodingmachine/nodejs:${TAG} sleep 1 2>&1 | grep -oP 'msg=docker' | head -n1`
 [[ "$RESULT" = "msg=docker" ]]
 
+# Let's check that Apache starts and serves the files of the working directory.
+if [[ $VARIANT == *apache* ]]; then
+  CONTAINER_ID=`docker run -d thecodingmachine/nodejs:${TAG}`
+  docker exec "$CONTAINER_ID" bash -c 'echo foobar > /var/www/html/index.html'
+  RESULT=""
+  for i in $(seq 1 30); do
+    RESULT=`docker exec "$CONTAINER_ID" curl -fs http://localhost/ || true`
+    [[ "$RESULT" = "foobar" ]] && break
+    sleep 1
+  done
+  docker rm -f "$CONTAINER_ID"
+  [[ "$RESULT" = "foobar" ]]
+fi
+
 echo "Tests passed with success"
 
 if [[ "$EVENT_NAME" == "push" || "$EVENT_NAME" == "schedule" || "$EVENT_NAME" == "workflow_dispatch" ]]; then
